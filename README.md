@@ -4,6 +4,32 @@
 
 I built the crawler stpe by step. Instead of trying the whole challleng at once, I started with small crawler, observed the problem, and improved it as I discovered different cases.
 
+## Quick Start 
+
+git clone 
+cd <Your Project folder>
+npm install 
+
+create .env:
+
+VISUALPING_USERNAME = 
+VISUALPING_PASSWORD = 
+START_URL = 
+
+Then run: 
+
+node crawler.js 
+node browserCrawler.js 
+
+
+Final output 
+Browser crawl completed:
+Broswer pages visited:   1000
+ passwords found:  5
+
+
+
+
 ## How the Crawler Evolved 
 
 1.Extract actual URL from Google redirect
