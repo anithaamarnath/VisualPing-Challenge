@@ -27,15 +27,16 @@ node crawler.js
 node browserCrawler.js 
 
 
-Browser crawl completed:
-Broswer pages visited:   1010
- passwords found:  3
-Remaining queue:  1
-
-==================
-Final Password
-=====================
+=======================
+Browser crawl completed
+========================
+Browser pages visited:  1010
+Reaminign queue: 1
+Paswords found: 4
+FINAL PASSWORDS
+===============
 VISUALPING{349a583fba34c301}
+VISUALPING{fb725e1f3d6728b1}
 VISUALPING{2dd5105a3fad0ef3}
 VISUALPING{73c8f3073fdc5f74}
 
@@ -197,7 +198,7 @@ The overal strategy throughout the challenge has been:
 
 ## Results 
 
-Passwords recovered : 4 / 8
+Passwords recovered : 5 / 8
 
 The password were discovered through multiple types rather than only visible HTML.
 
