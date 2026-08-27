@@ -173,7 +173,7 @@ A reliable crawler needs to think about:
 - Redirects
 - URL resolution 
 - URL normalizationa
-- Quesry parameters 
+- Query parameters 
 - Images
 - Metadate
 - Encoded content
@@ -186,7 +186,7 @@ A reliable crawler needs to think about:
 - Crawl boundaries.
 - Completion conditions.
 
-Building the crawler incrementally helped me understand why each part was necessary and made it easier to debug problems a s the crawler beacame larger.
+Building the crawler incrementally helped me understand why each part was necessary and made it easier to debug problems as the crawler beacame larger.
 
 The image investigation was especially useful because it demonstrated  that information can exist inside a resource without being directly visible as normal HTML text.
 Instead of assuming one extraction techniue woul work everywher, I started using the resource type and actual response contnet to decide how it should be inspected.
