@@ -42,8 +42,11 @@ VISUALPING{2dd5105a3fad0ef3}
 VISUALPING{73c8f3073fdc5f74}
 
 
+
 During the crawl, I discovered that some information was stored inside image resources.
 ![Whiteboard Scan](images/whiteboard-scan.png)
+
+VISUALPING{e1c2e40cf01c17cc}
 ```
 
 This demonstrated why inspecting only HTML text and `<a href>` link was not suffient.
