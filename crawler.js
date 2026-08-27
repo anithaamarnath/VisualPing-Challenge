@@ -2,7 +2,6 @@
 require('dotenv').config();
 
 const MAX_PAGES         = 1000;
-const MAX_PAGE_NUMBER   = 20;
 
 const startUrl = process.env.START_URL;
 const userName = process.env.VISUALPING_USERNAME;
@@ -14,7 +13,7 @@ if(!startUrl || !userName || !password) {
 }
 
 
-// Extract actuual URL from the START_URL query parameter
+// Extract actual URL from the START_URL query parameter
 const url       = new URL(startUrl);
 const finalUrl  = url.searchParams.get('q');
 
@@ -32,6 +31,8 @@ const visited   = new Set();
 
 const passwordPattern   = /VISUALPING\{[0-9a-fA-F]{16}\}/g;
 const linkPattern       = /(?:href|src)=["']([^"']+)["']/g;
+
+
 
 async function crawl(currentUrl) {
     let normalizedUrl;
@@ -118,10 +119,6 @@ async function crawl(currentUrl) {
             const resource = cssMatch[2];
             try {
                 const resolved = new URL(resource, normalizedUrl).href;
-                // resolved.hash = ''; 
-                // const newOrigin = resolved.origin;
-                // const newUrl    = resolved.href;
-                console.log('Found CSS resource:', resolved);
                 await crawl(resolved);
             } catch (error) {
                 console.error('Could not parse CSS resource URL:', resource, error.message);
@@ -175,10 +172,7 @@ async function crawl(currentUrl) {
             
             const pageNumber = parsedUrl.searchParams.get('page');
             
-            // if(pageNumber && Number(pageNumber) > MAX_PAGE_NUMBER) {
-            // console.log(`Skipping link with page number > ${MAX_PAGE_NUMBER}:`, newUrl);
-            // continue;
-            // }
+    
 
             await crawl(newUrl);
 
