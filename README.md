@@ -27,10 +27,24 @@ node crawler.js
 node browserCrawler.js 
 
 
-Final output 
 Browser crawl completed:
-Broswer pages visited:   1000
- passwords found:  5
+Broswer pages visited:   1010
+ passwords found:  3
+Remaining queue:  1
+
+==================
+Final Password
+=====================
+VISUALPING{349a583fba34c301}
+VISUALPING{2dd5105a3fad0ef3}
+VISUALPING{73c8f3073fdc5f74}
+
+During the crawl, I discovered that some information was stored inside image resources.
+![Whiteboard Scan](images/whiteboard-scan.png)
+
+This demonstrated why inspecting only HTML text and `<a href>` link was not suffient.
+
+
 
 
 
@@ -85,6 +99,70 @@ The crawl is considered complete when the queue is empty, meaning the are no mor
 This distinction becam important beacus pagination can genererate a large number of reachable URLs.
 
 
+
+
+## Why I used Two Crawlers
+
+I used two crawling approaches because they solve different parts of the challenge:
+
+- `crawler.js` - HTTP based crawler using `fetch()`
+- `browserCrawler.js` - browser based crawler using Playwright
+
+### 1. HTTP Crawler (`crawler.js`)
+
+I started with a simple HTTP crawler because it is lightweight and helped me understand the structure of the site.
+
+It:
+
+1. Fetches a URL diretly.
+2. Reads the response body.
+3. Searches for passwords.
+4. Extracts referenced links/resources.
+5. Resolves relative URLs.
+6. Tracks visited URLs.
+Restricts crawlign to teh same origim.
+8. Follows discovered URLs.
+
+
+This approach worked well for content that is directly available in the server response.
+
+However, I relaized that an HTTP crawler alone does not behave exactly like a real browser.
+Some resources can be loaded or created dynamically by JavaScript.
+
+### 2. Browser Crawler (`browserCrawler.js`)
+
+I added a Playwright browser crawler to ahndle content that a normal HTTP request couls miss.
+
+The browser Crawler:
+
+1. Load the page in real browser environment.
+2, Execute JS.
+3. Inspects the renedered DOM.
+4. Watches browser network requests and responses.
+5. Detects dynamically loaded scripts and resources.
+6. Inspects attributes such as `href`, `src`, and `action`. 
+7. Scan JS, CSS, and other text responses.
+8. Adds newly discovered same-origin resiruces back to the crawl queue.
+
+### Why Both Are Useful
+
+The HTTP crawler helped with basic site traversal and understanding the raw server response.
+
+The browser crawler extended that approach by showing what a real browser acctually loads and renders.
+
+This was important because the challeng specifically demonstrated that not everything reachablr form a page is neccessarily presnet as a normal `<a href>` link.
+
+```text
+HTTP crawler:
+Request -> Raw response -> Extract -> Follows
+
+
+Browser crawler:
+
+Load page -> Execute JS -> Observe DOM/network -> Extract -> Follows
+```
+
+
 ### Key Learning
 
 The biggest thing I learned from this challenge is that a crawler is more than simply finding `<a href>` links.
@@ -117,10 +195,12 @@ The overal strategy throughout the challenge has been:
 
 ** Discover -> Inspect -> Isolate -> Test -> Improve the crawler -> Repeat **
 
+## Results 
 
-## Why I used Two Crawlers
+Passwords recovered : 4 / 8
 
-I used two crawling approaches because they solve different parts of the challenge:
+The password were discovered through multiple types rather than only visible HTML.
 
-- 
+
+
 
