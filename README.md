@@ -27,21 +27,23 @@ node crawler.js
 node browserCrawler.js 
 
 
-=======================
+
 Browser crawl completed
-========================
+
 Browser pages visited:  1010
 Reaminign queue: 1
-Paswords found: 4
+Paswords found: 4 
 FINAL PASSWORDS
-===============
+```
 VISUALPING{349a583fba34c301}
 VISUALPING{fb725e1f3d6728b1}
 VISUALPING{2dd5105a3fad0ef3}
 VISUALPING{73c8f3073fdc5f74}
 
+
 During the crawl, I discovered that some information was stored inside image resources.
 ![Whiteboard Scan](images/whiteboard-scan.png)
+```
 
 This demonstrated why inspecting only HTML text and `<a href>` link was not suffient.
 
