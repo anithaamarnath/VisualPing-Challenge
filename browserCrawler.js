@@ -181,11 +181,11 @@ function addNetworkResources() {
 function printResults() {
     console.log('\n=======================');
     console.log('Browser crawl completed');
-    console.log("=================");
+    console.log("========================");
     console.log("Browser pages visited: ", visited.size);
     console.log('Reaminign queue:' , queue.length);
     console.log("Paswords found:", passwords.size);
-    comsole.log('FINAL PASSWORDS');
+    console.log('FINAL PASSWORDS');
     console.log('===============');
     
     for(const foundPassword of passwords) {
