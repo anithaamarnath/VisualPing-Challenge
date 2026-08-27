@@ -24,6 +24,7 @@ START_URL =
 Then run: 
 
 node crawler.js 
+
 node browserCrawler.js 
 
 
