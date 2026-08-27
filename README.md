@@ -98,7 +98,7 @@ A reliable crawler needs to think about:
 - Quesry parameters 
 - Images
 - Metadate
--Encoded content
+- Encoded content
 - Binary reosurces
 - Duplicate detection 
 - Pagination 
@@ -118,5 +118,9 @@ The overal strategy throughout the challenge has been:
 ** Discover -> Inspect -> Isolate -> Test -> Improve the crawler -> Repeat **
 
 
+## Why I used Two Crawlers
 
+I used two crawling approaches because they solve different parts of the challenge:
+
+- 
 
